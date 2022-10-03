@@ -19,7 +19,7 @@ public class BunParametrizedTest {
         this.expectedBunPrice = expectedBunPrice;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters( name = "{index}: Bun({0}) price{1}" )
     public static Object[][] getBunData() {
         return new Object[][] {
                 {" ", 0, " ", 0},
@@ -31,7 +31,7 @@ public class BunParametrizedTest {
     @Test
     public void checkBeCreateBunWithNameAndPrice() {
         Bun bun = new Bun(bunName, bunPrice);
-        assertEquals(bun.getName(), expectedBunName);
+        assertEquals(expectedBunName,bun.getName());
         assertEquals(bun.getPrice(), expectedBunPrice, 0.0);
     }
 }
